@@ -42,6 +42,10 @@ def cloudinary_tag(context, image, options_dict=None, **options):
         pass
     if not isinstance(image, CloudinaryResource):
         image = CloudinaryResource(image)
+    
+    if 'alt' not in options:
+        options['role'] = 'presentation'
+        
     return mark_safe(image.image(**options))
 
 
